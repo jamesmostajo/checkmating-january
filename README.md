@@ -3,7 +3,7 @@ Web-based chess dashboard composed of data visualizations sourced from [Lichess]
 
 ---
 <h3 align="center">
-    ♟ Try it out here: <a href="https://chessinsight.streamlit.app">Lichess Visualizations on streamlit </a> ♟
+    ♟ Try it out here: <a href="https://chessinsight.streamlit.app">chessinsight on streamlit </a> ♟
 </h3>
 
 ---
