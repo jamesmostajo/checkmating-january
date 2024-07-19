@@ -14,7 +14,7 @@ def getLastMove(moves, termination):
         return moves[-1]
 
 filename = "Cleaning/lichess_elite_2023-01.pgn"
-filepath = "Cleaning/info_data.csv"
+filepath = "Cleaning/info_data_withmoves.csv"
 
 game_id = 0
 f = open(filename, "r")
@@ -40,7 +40,11 @@ for game_index in range(len(raw_data)):
     result = get(game, "Result ")
     lastMove = getLastMove(moves, termination)
     opening = '\"' + get(game, "Opening ") + '\"'
-    info = [game_id, whiteElo, blackElo, timeControl, lastMove, termination, result, opening]
+    nmoves = ""
+    for token in moves:
+        if "." in token: continue
+        nmoves += token + ";"
+    info = [game_id, whiteElo, blackElo, timeControl, lastMove, termination, result, opening, nmoves[:-1]]
     print(*info, sep=',', file = s)
     game_id+=1
 
