@@ -1,11 +1,11 @@
 import streamlit as st
-import getPieGameResults, getEloHistogram, getHeatmap, getPieceTakes, getCheckmateDistribution
+import getPieGameResults, getEloHistogram, getHeatmap, getPieceTakes, getCheckmateDistribution, getGamesNum
 from Cleaning.Openings import openings
 
 def show_histogram(timeControl, opening):
     import plotly.express as px
-    st.subheader("Number of Games played by Game Elo")
-    st.write("The bar graph below shows the distribution of games played depending on the game’s Elo Rating")
+    st.subheader("How many Games are played by Game Elo?")
+    st.write("A histogram showing the distribution of games played depending on the game’s elo rating.")
     data = getEloHistogram.getHistogramData(timeControl, opening)
     custom_colors = ['#125D63']
     fig = px.histogram(
@@ -26,7 +26,7 @@ def show_checkmate_heatmap(start_elo, end_elo, timeControl, opening):
     import plotly.express as px
     
     st.subheader("Where do Pieces move to Checkmate?")
-    st.write("Below is a heatmap displaying any given chess pieces’ most common position on the board whenever they get a checkmate.")
+    st.write("A heatmap displaying any given chess pieces’ most common position on the board whenever they get a checkmate.")
     col1, col2, col3 = st.columns(3)
 
     with col1:
@@ -58,7 +58,7 @@ def show_game_results(start_elo, end_elo, timeControl, opening):
     import plotly.graph_objects as go
 
     st.subheader("How frequent do Checkmates occur?")
-    st.write("The pie chart shows the comparison of how Chess games conclude between checkmates, draws, and other circumstances.")
+    st.write("A pie chart showing the comparison of how Chess games conclude between checkmates, draws, and other circumstances.")
 
     labels = ["Draw", "Checkmate", "Abandoned", "Resigned", "Time Forfeit"]
     values = getPieGameResults.getPieGameresults(start_elo, end_elo, timeControl, opening)
@@ -91,7 +91,7 @@ def show_piece_takes(start_elo, end_elo, timeControl, opening):
     import plotly.graph_objects as go
 
     st.subheader("How many captures does each Piece make?")
-    st.write("This bar graph depicts which piece has the highest number of takes among the others")
+    st.write("A bar graph depicting which piece has the highest number of takes among the others.")
 
     is_divided = st.toggle("Divide by number of type of piece")
 
@@ -121,7 +121,7 @@ def show_checkmate_graph(start_elo, end_elo, timeControl, opening):
     data = getCheckmateDistribution.getCheckmateData(start_elo, end_elo, timeControl, opening)
 
     st.subheader("What Piece is used the most to Checkmate?")
-    st.write("Another pie chart here illustrates which piece is being used the most in order to get a checkmate.")
+    st.write("A pie chart illustrating which piece is being used the most in order to get a checkmate.")
     if data == -1 :
         st.write("There are no checkmates within the given categories")
         return
@@ -132,6 +132,10 @@ def show_checkmate_graph(start_elo, end_elo, timeControl, opening):
 
     fig.update_layout(margin=dict(t=0, b=0))
     st.plotly_chart(fig, theme="streamlit")
+
+def show_big_number(start_elo, end_elo):
+    game_num = getGamesNum.getGamesNum(start_elo, end_elo)
+    st.metric("Number of games being analyzed", game_num)
 
 def main():
     st.set_page_config(
@@ -151,8 +155,8 @@ def main():
     with col1:
         start_elo, end_elo = st.select_slider(
             "Select range of game elo rating",
-            options=range(2300, 3001),
-            value=(2300, 3000)
+            options=range(2400, 3001),
+            value=(2400, 3000)
         )
     with col2:
         timeControl = st.selectbox(
@@ -164,6 +168,8 @@ def main():
             "Select opening",
             openings
         )
+    
+    show_big_number(start_elo, end_elo)
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "Games Played?",
