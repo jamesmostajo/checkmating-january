@@ -3,20 +3,24 @@ Web-based chess dashboard composed of data visualizations sourced from [Lichess]
 
 ---
 <h3 align="center">
-    ♟ Try it out here: <a href="https://prettymapp.streamlit.app/">Lichess Visualizations on streamlit </a> ♟
+    ♟ Try it out here: <a href="https://chessinsight.streamlit.app">Lichess Visualizations on streamlit </a> ♟
 </h3>
 
 ---
 
 # Running the app locally
+### Clone github repository
 ```
-# clone repo
 git clone https://github.com/jamesmostajo/checkmating-january.git
+```
 
-# install requirements
+### Install requirements
+```
 pip install -r requirements.txt
+```
 
-# run app
+### Run webapp
+```
 streamlit run app.py
 ```
 It is recommended to create a virtual environment first when installing the app locally.
