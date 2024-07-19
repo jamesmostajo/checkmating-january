@@ -110,7 +110,7 @@ def show_piece_takes(start_elo, end_elo, timeControl, opening):
     is_divided = st.toggle("Divide by number of type of piece")
 
     x = ['Pawn', 'Rook', 'Knight', 'Bishop', 'Queen', 'King']
-    y = getPieceTakes.getPieceTakesData(start_elo, end_elo, timeControl)
+    y = getPieceTakes.getPieceTakesData(start_elo, end_elo, timeControl, opening)
 
     if is_divided:
         div = [16, 4, 4, 4, 2, 2]
@@ -176,7 +176,7 @@ def main():
     with tab2:
         show_checkmate_heatmap(start_elo, end_elo, timeControl, opening)  
     with tab3:
-        # show_piece_takes(start_elo, end_elo, timeControl)
+        show_piece_takes(start_elo, end_elo, timeControl, opening)
         pass
     with tab4:
         # show_game_results(start_elo, end_elo, timeControl, opening)

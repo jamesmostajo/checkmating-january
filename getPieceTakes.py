@@ -2,7 +2,7 @@ import json
 
 jsonfilename = "Cleaning/EloPieceTakes.json"
 
-def getPieceTakesData(ratingFilter1, ratingFilter2):
+def getPieceTakesData(ratingFilter1, ratingFilter2, timeControl, openingFilter):
     
     with open(jsonfilename, 'r') as jsonfile:
         cumu_elo_takes = json.load(jsonfile)
