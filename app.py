@@ -169,7 +169,7 @@ def main():
             openings
         )
     
-    show_big_number(start_elo, end_elo)
+    # show_big_number(start_elo, end_elo)
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "Games Played?",
