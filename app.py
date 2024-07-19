@@ -82,7 +82,7 @@ def show_game_results(start_elo, end_elo, timeControl, opening):
         st.write("There are no games with the given categories")
         return
 
-    custom_colors = ['#330036', '#A3001E', '#125D63']
+    custom_colors = ['#330036', '#A3001E', '#125D63', '#0D7296', '#F5B841', '#EC6F9B']
     hover_text = [
         "",
         "",
