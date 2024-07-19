@@ -1,6 +1,8 @@
 # Lichess Visualizations ♟
 Web-based chess dashboard composed of data visualizations sourced from [Lichess](https://database.nikonoel.fr/)' high elo chess games in January 2023.
 
+Developed using Streamlit and Plotly.
+
 ---
 <h3 align="center">
     ♟ Try it out here: <a href="https://chessinsight.streamlit.app">chessinsight on streamlit </a> ♟
