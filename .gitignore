@@ -2,6 +2,5 @@ __pycache__
 Cleaning/lichess_elite_2023-01.pgn
 streamlitvenv
 Cleaning/games_data.csv
-Cleaning/info_data.csv
 Cleaning/EloGameResults.json
 Cleaning/info_data_withmoves.csv
