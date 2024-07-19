@@ -5,6 +5,7 @@ from Cleaning.Openings import openings
 def show_histogram(timeControl, opening):
     import plotly.express as px
     st.subheader("Number of Games played by Game Elo")
+    st.write("The bar graph below shows the distribution of games played depending on the game’s Elo Rating")
     data = getEloHistogram.getHistogramData(timeControl, opening)
     custom_colors = ['#125D63']
     fig = px.histogram(
@@ -53,28 +54,11 @@ def show_checkmate_heatmap(start_elo, end_elo, timeControl, opening):
 
     st.plotly_chart(fig, theme="streamlit")
 
-def show_checkmate_graph(start_elo, end_elo, timeControl, opening):
-    import plotly.express as px
-    data = getCheckmateDistribution.getCheckmateData(start_elo, end_elo, timeControl, opening)
-
-    st.subheader("What Piece is used the most to Checkmate?")
-    st.write("insert description here.")
-    if data == -1 :
-        st.write("There are no checkmates within the given categories")
-        return
-
-    custom_colors = ['#330036', '#A3001E', '#125D63', '#0D7296', '#F5B841', '#EC6F9B']
-    
-    fig = px.pie(names=data['piece'], values = data['pieceCount'], color_discrete_sequence=custom_colors)
-
-    fig.update_layout(margin=dict(t=0, b=0))
-    st.plotly_chart(fig, theme="streamlit")
-
 def show_game_results(start_elo, end_elo, timeControl, opening):
     import plotly.graph_objects as go
 
     st.subheader("How frequent do Checkmates occur?")
-    st.write("insert description here.")
+    st.write("The pie chart shows the comparison of how Chess games conclude between checkmates, draws, and other circumstances.")
 
     labels = ["Draw", "Checkmate", "Abandoned", "Resigned", "Time Forfeit"]
     values = getPieGameResults.getPieGameresults(start_elo, end_elo, timeControl, opening)
@@ -132,6 +116,22 @@ def show_piece_takes(start_elo, end_elo, timeControl, opening):
 
     st.plotly_chart(fig, theme="streamlit")
 
+def show_checkmate_graph(start_elo, end_elo, timeControl, opening):
+    import plotly.express as px
+    data = getCheckmateDistribution.getCheckmateData(start_elo, end_elo, timeControl, opening)
+
+    st.subheader("What Piece is used the most to Checkmate?")
+    st.write("Another pie chart here illustrates which piece is being used the most in order to get a checkmate.")
+    if data == -1 :
+        st.write("There are no checkmates within the given categories")
+        return
+
+    custom_colors = ['#330036', '#A3001E', '#125D63', '#0D7296', '#F5B841', '#EC6F9B']
+    
+    fig = px.pie(names=data['piece'], values = data['pieceCount'], color_discrete_sequence=custom_colors)
+
+    fig.update_layout(margin=dict(t=0, b=0))
+    st.plotly_chart(fig, theme="streamlit")
 
 def main():
     st.set_page_config(
