@@ -11,6 +11,9 @@ Developed using Streamlit and Plotly.
 ---
 
 # Running the app locally
+
+It is recommended to create a virtual environment first when installing the app locally.
+
 ### Clone GitHub repository
 ```
 git clone https://github.com/jamesmostajo/checkmating-january.git
@@ -25,7 +28,6 @@ pip install -r requirements.txt
 ```
 streamlit run app.py
 ```
-It is recommended to create a virtual environment first when installing the app locally.
 
 ### (Optional) Download additional data from GDrive
 Google Drive link [here](https://drive.google.com/drive/folders/1eSEvHXplYsLy1jnb8LXypWg24gdbgnM6?usp=sharing).
