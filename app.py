@@ -78,7 +78,9 @@ def show_game_results(start_elo, end_elo, timeControl, opening):
 
     labels = ["Draw", "Checkmate", "Abandoned", "Resigned", "Time Forfeit"]
     values = getPieGameResults.getPieGameresults(start_elo, end_elo, timeControl, opening)
-    print(values)
+    if sum(values) == 0 :
+        st.write("There are no games with the given categories")
+        return
 
     custom_colors = ['#330036', '#A3001E', '#125D63']
     hover_text = [
@@ -179,7 +181,7 @@ def main():
         show_piece_takes(start_elo, end_elo, timeControl, opening)
         pass
     with tab4:
-        # show_game_results(start_elo, end_elo, timeControl, opening)
+        show_game_results(start_elo, end_elo, timeControl, opening)
         pass
     with tab5:
         show_checkmate_graph(start_elo, end_elo, timeControl, opening)
